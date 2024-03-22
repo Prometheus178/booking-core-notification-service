@@ -1,0 +1,7 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: booking-core-notification
+  kafka:
+    bootstrap-servers: localhost:9092
