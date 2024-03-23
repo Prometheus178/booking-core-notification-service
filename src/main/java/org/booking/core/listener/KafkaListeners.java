@@ -2,7 +2,7 @@ package org.booking.core.listener;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
-import org.booking.core.service.NotificationManager;
+import org.booking.core.service.notification.manager.NotificationManager;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 

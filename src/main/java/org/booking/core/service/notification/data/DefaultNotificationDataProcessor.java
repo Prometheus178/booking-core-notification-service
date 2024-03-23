@@ -1,4 +1,4 @@
-package org.booking.core.service;
+package org.booking.core.service.notification.data;
 
 import com.google.gson.Gson;
 import lombok.extern.java.Log;

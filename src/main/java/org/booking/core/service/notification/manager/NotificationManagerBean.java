@@ -1,7 +1,9 @@
-package org.booking.core.service;
+package org.booking.core.service.notification.manager;
 
 import lombok.RequiredArgsConstructor;
 import org.booking.core.domain.notification.DefaultNotificationDto;
+import org.booking.core.service.notification.NotificationStrategy;
+import org.booking.core.service.notification.data.MessageDataProcessor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
