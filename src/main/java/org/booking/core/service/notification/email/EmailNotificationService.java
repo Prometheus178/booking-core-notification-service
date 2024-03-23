@@ -3,16 +3,17 @@ package org.booking.core.service.notification.email;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.booking.core.constant.NotificationType;
+import org.booking.core.constant.ProcessorType;
 import org.booking.core.domain.notification.NotificationDto;
 import org.booking.core.service.notification.NotificationService;
-import org.booking.core.service.notification.data.DefaultActionDataProcessor;
+import org.booking.core.service.notification.data.DefaultActionDataProcessorStrategy;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-import static org.booking.core.service.notification.data.DefaultActionDataProcessor.*;
+import static org.booking.core.service.notification.data.EmailDataProcessor.*;
 
 @Log
 @RequiredArgsConstructor
@@ -20,13 +21,13 @@ import static org.booking.core.service.notification.data.DefaultActionDataProces
 public class EmailNotificationService implements NotificationService {
 
 	private final JavaMailSender javaMailSender;
-	private final DefaultActionDataProcessor actionDataProcessor;
+	private final DefaultActionDataProcessorStrategy actionDataProcessor;
 
 	@Override
 	public void sent(NotificationDto notificationDto) {
 		log.info("From: " + NotificationType.EMAIL);
-		Map<String, String> data = actionDataProcessor.execute(NotificationType.EMAIL, notificationDto);
-		sent(data.get(MAIL_TO) , data.get(MAIL_SUBJECT), data.get(MAIL_TEXT));
+		Map<String, String> data = actionDataProcessor.apply(ProcessorType.EMAIL_PROCESSOR, notificationDto);
+		sent(data.get(MAIL_TO), data.get(MAIL_SUBJECT), data.get(MAIL_TEXT));
 	}
 
 	private void sent(String to, String subject, String text) {

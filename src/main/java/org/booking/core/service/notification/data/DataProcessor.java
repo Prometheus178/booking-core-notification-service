@@ -4,8 +4,7 @@ import org.booking.core.domain.notification.NotificationDto;
 
 import java.util.Map;
 
-public interface ActionDataProcessor {
+public interface DataProcessor {
 
-	Map<String, String> execute(String type, NotificationDto notificationDto);
-
+	Map<String, String> execute(NotificationDto notificationDto);
 }
