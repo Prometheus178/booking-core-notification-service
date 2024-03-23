@@ -3,10 +3,10 @@ package org.booking.core.service.notification.data;
 import lombok.RequiredArgsConstructor;
 import org.booking.core.constant.ProcessorType;
 import org.booking.core.constant.RoleClassification;
-import org.booking.core.domain.entity.EmailData;
+import org.booking.core.domain.document.EmailData;
 import org.booking.core.domain.notification.ContactDto;
 import org.booking.core.domain.notification.NotificationDto;
-import org.booking.core.repository.ActionRepository;
+import org.booking.core.repository.action.ActionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

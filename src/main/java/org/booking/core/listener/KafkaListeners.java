@@ -6,6 +6,7 @@ import org.booking.core.service.notification.manager.NotificationManager;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
+
 @RequiredArgsConstructor
 @Log
 @Component
@@ -17,8 +18,7 @@ public class KafkaListeners {
 			groupId = "notification-service"
 
 	)
-	void listener(String message){
-		log.info(message);
-		notificationManager.sent(message);
+	void listener(String message) {
+		notificationManager.handle(message);
 	}
 }

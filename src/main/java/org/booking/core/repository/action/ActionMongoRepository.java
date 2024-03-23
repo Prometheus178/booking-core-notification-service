@@ -1,6 +1,6 @@
-package org.booking.core.repository;
+package org.booking.core.repository.action;
 
-import org.booking.core.domain.entity.EmailData;
+import org.booking.core.domain.document.EmailData;
 import org.springframework.stereotype.Repository;
 
 @Repository

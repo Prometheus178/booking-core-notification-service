@@ -26,8 +26,12 @@ public class EmailNotificationService implements NotificationService {
 	@Override
 	public void sent(NotificationDto notificationDto) {
 		log.info("From: " + NotificationType.EMAIL);
-		Map<String, String> data = actionDataProcessor.apply(ProcessorType.EMAIL_PROCESSOR, notificationDto);
-		sent(data.get(MAIL_TO), data.get(MAIL_SUBJECT), data.get(MAIL_TEXT));
+		try {
+			Map<String, String> data = actionDataProcessor.apply(ProcessorType.EMAIL_PROCESSOR, notificationDto);
+			sent(data.get(MAIL_TO), data.get(MAIL_SUBJECT), data.get(MAIL_TEXT));
+		} catch (Exception e) {
+			log.warning(e.getMessage());
+		}
 	}
 
 	private void sent(String to, String subject, String text) {
