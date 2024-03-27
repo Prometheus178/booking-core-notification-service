@@ -1,6 +1,18 @@
 version: '3.9'
 
 services:
+  booking-core-notification_app-service:
+    container_name: 'booking-core-notification_app-service'
+    build: .
+    ports:
+      - 8081:8081
+    networks:
+      - booking-core
+    depends_on:
+      - booking-core-notification_mongo-db
+#    environment:
+#      DATABASE_URL: booking-core-notification_mongo-db
+
   booking-core-notification_mongo-db:
     container_name: 'booking-core-notification_mongo-db'
     image: 'mongo:latest'
@@ -8,22 +20,11 @@ services:
       - '27017:27017'
     volumes:
       - data:/data
-#    environment:
-#      - MONGO_INITDB_ROOT_USERNAME=core_user
-#      - MONGO_INITDB_ROOT_PASSWORD=core
+    networks:
+      - booking-core
 volumes:
   data: { }
-#networks:
-#  default:
-#    name: mongodb_network
-#  booking-core_notification-service:
-#    container_name: 'booking-core_notification-service'
-#    build: .
-#    ports:
-#      - 8081:8081
-#    environment:
-#      DATABASE_URL: postgresql://booking-core_db:5432/core_db
-#      DATABASE_USERNAME: core_user
-#      DATABASE_PASSWORD: core
-#    depends_on:
-#      - booking-core_db
+networks:
+  booking-core:
+    name: booking-core
+    driver: bridge
