@@ -4,8 +4,8 @@ spring:
   application:
     name: booking-core-notification
   kafka:
-#    bootstrap-servers: localhost:9093
-    bootstrap-servers: broker:9092
+#    bootstrap-servers: localhost:9092
+    bootstrap-servers: booking-core_kafka:9092
   data:
     mongodb:
       #      authentication-database: admin

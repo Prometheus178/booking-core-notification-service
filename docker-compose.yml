@@ -5,7 +5,7 @@ services:
     container_name: 'booking-core-notification_app-service'
     build: .
     ports:
-      - 8081:8081
+      - 8083:8083
     networks:
       - booking-core
     depends_on:

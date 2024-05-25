@@ -36,9 +36,17 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.5.3.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.3.Final'
 
+    //kafka-streams
+    implementation 'org.apache.kafka:kafka-streams:3.7.0'
+
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.kafka:spring-kafka-test'
+    testImplementation 'org.apache.kafka:kafka-streams-test-utils:3.7.0'
+    testImplementation group: 'org.instancio', name: 'instancio-junit', version: '3.7.1'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
 }
 
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
