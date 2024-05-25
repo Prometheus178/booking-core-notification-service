@@ -4,8 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.booking.core.constant.ProcessorType;
 import org.booking.core.constant.RoleClassification;
 import org.booking.core.domain.document.EmailData;
-import org.booking.core.domain.notification.ContactDto;
-import org.booking.core.domain.notification.NotificationDto;
+import org.booking.core.domain.document.notification.Contact;
+import org.booking.core.domain.document.notification.Notification;
+
 import org.booking.core.repository.action.ActionRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,12 @@ public class EmailDataProcessor implements DataProcessor {
 	public final static String MAIL_TO = "MAIL_TO";
 	public final static String MAIL_SUBJECT = "MAIL_SUBJECT";
 	public final static String MAIL_TEXT = "MAIL_TEXT";
+
 	private final ActionRepository actionRepository;
 
 	@Override
-	public Map<String, String> execute(NotificationDto notificationDto) {
-		ContactDto customerContacts = notificationDto.getContacts().stream()
+	public Map<String, String> execute(Notification notificationDto) {
+		Contact customerContacts = notificationDto.getContacts().stream()
 				.filter(contactDto -> RoleClassification.CUSTOMER.name().equals(contactDto.getRole()))
 				.findFirst()
 				.orElseThrow(RuntimeException::new);

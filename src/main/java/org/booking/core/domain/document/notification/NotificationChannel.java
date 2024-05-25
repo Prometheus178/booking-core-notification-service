@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class MetaInfo implements Serializable {
+public class NotificationChannel implements Serializable {
 
 	private String sender;
 	private String receiver;

@@ -1,7 +1,7 @@
 package org.booking.core.service.notification.data;
 
 import lombok.RequiredArgsConstructor;
-import org.booking.core.domain.notification.NotificationDto;
+import org.booking.core.domain.document.notification.Notification;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -12,9 +12,9 @@ public class DefaultActionDataProcessorStrategy {
 
 	private final Map<String, DataProcessor> dataProcessorMap;
 
-	public Map<String, String> apply(String type, NotificationDto notificationDto) {
+	public Map<String, String> apply(String type, Notification notification) {
 		DataProcessor dataProcessor = getDataProcessor(type);
-		return dataProcessor.execute(notificationDto);
+		return dataProcessor.execute(notification);
 	}
 
 	private DataProcessor getDataProcessor(String type) {
